@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+  <!--  The VSCT compiler (the tool that translates this file into the binary
+        format that VisualStudio will consume) has the ability to run a preprocessor
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so
+        it is possible to define includes and macros with the same syntax used
+        in C++ files. Using this ability of the compiler here, we include some files
+        defining some of the constants that we will use inside the file. -->
+
+  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+  <Extern href="stdidcmd.h" />
+
+  <!--This header contains the command ids for the menus provided by the shell. -->
+  <Extern href="vsshlids.h" />
+
+  <!--Definition of some VSCT specific constants. In this sample we use it for the IDs inside the guidOfficeIcon group. -->
+  <Extern href="msobtnid.h" />
+
+  <Commands package="guidCleanupSolutionConfigurationPkg">
+    <Groups>
+      <Group guid="GuidCleanupSolutionConfigurationContextSolutionNodeGroup" id="GroupIDCleanupSolutionConfigurationContextSolutionNodeGroup" priority="0x0100">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
+      </Group>
+
+      <Group guid="GuidCleanupSolutionConfigurationToolsNodeGroup" id="GroupIDCleanupSolutionConfigurationToolsNodeGroup" priority="0x0200">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidCleanupSolutionConfigurationCmdSet" id="cmdidCleanUpSolution" priority="0x0100" type="Button">
+        <!--<CommandFlag>DefaultDisabled</CommandFlag>-->
+        <Parent guid="GuidCleanupSolutionConfigurationContextSolutionNodeGroup" id="GroupIDCleanupSolutionConfigurationContextSolutionNodeGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Cleanup solution configuration</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidCleanupSolutionConfigurationCmdSet" id="cmdidToolsConfiguration" priority="0x0100" type="Button">
+        <Parent guid="GuidCleanupSolutionConfigurationToolsNodeGroup" id="GroupIDCleanupSolutionConfigurationToolsNodeGroup" />
+        <Strings>
+          <ButtonText>Cleanup solution configuration options</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidCleanupSolutionConfigurationPkg" value="{610646e1-4032-4b2f-ae1b-fa847d18659f}" />
+
+    <GuidSymbol name="guidCleanupSolutionConfigurationCmdSet" value="{c0d89b50-69ae-48ff-9eb4-6a2940f33ecb}">
+
+      <IDSymbol name="cmdidCleanUpSolution" value="0x0100" />
+      <IDSymbol name="cmdidToolsConfiguration" value="0x0101" />
+    </GuidSymbol>
+
+    <GuidSymbol name="GuidCleanupSolutionConfigurationContextSolutionNodeGroup" value="{eda37cf1-ff29-46aa-ba07-05abf7ba6596}">
+      <IDSymbol name="GroupIDCleanupSolutionConfigurationContextSolutionNodeGroup" value="0x1050" />
+    </GuidSymbol>
+
+    <GuidSymbol name="GuidCleanupSolutionConfigurationToolsNodeGroup" value="{eda37cf1-ff30-46aa-ba07-05abf7ba6596}">
+      <IDSymbol name="GroupIDCleanupSolutionConfigurationToolsNodeGroup" value="0x1060" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
